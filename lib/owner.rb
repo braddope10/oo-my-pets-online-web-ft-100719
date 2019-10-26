@@ -1,13 +1,14 @@
 class Owner
-  # code goes here	  attr_accessor :pets, :name
-end 	  attr_reader :species
+  # code goes here	  
+  attr_accessor :pets, :name
+  attr_reader :species
 
   @@all = []
 
   def initialize(species)
     @species = species
     @@all << self
-    @pets = { :fishes => [], :dogs => [], :cats => [] }
+    @pets = {:dogs => [], :cats => [] }
   end
 
   def self.all
@@ -26,10 +27,7 @@ end 	  attr_reader :species
     "I am a #{species}."
   end
 
-  def buy_fish(name)
-    fish = Fish.new(name)
-    pets[:fishes] << fish
-  end
+  
 
   def buy_cat(name)
     cat = Cat.new(name)
@@ -50,9 +48,6 @@ end 	  attr_reader :species
     pets[:cats].map {|cat| cat.mood = "happy"}
   end
 
-  def feed_fish
-    pets[:fishes].map {|fish| fish.mood = "happy"}
-  end
 
   def sell_pets
     pets.each do |type, pets|
